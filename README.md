@@ -20,12 +20,12 @@ julia env.jl
 ```
 
 ### Usage
-In order to use our code on your own edge flows data, you first need to 1) provide the adjacency matrix **A** of your network 2) read your edge flows into an antisymmetric flow matrix **F**. Then you can create structures that are compatible with our code with the following. For a detailed example, we recommend the user to look at **read_TransportationNetwork** in [traffic.jl](traffic.jl)
-
+In order to use our code on your own edge flows data, you need to provide 1) the adjacency matrix **A** of your network 2) an antisymmetric flow matrix **F**. Then you can convert them to structures compatible with our code with the following.
 ```julia
 FN = NetworkOP.FlowNetwork(A);
 flow_vec = NetworkOP.mat2vec(FN, F);
 ```
+For a detailed example, we recommend the user to look at **read_TransportationNetwork** in [traffic.jl](traffic.jl)
 
 After that, you can test our algorithm by the following function call, where **f_vec** is the reconstructured edge flows.
 ```julia
