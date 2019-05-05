@@ -38,6 +38,6 @@ The plots in our paper can be reproduced by running.
 ```
 julia run.jl
 ```
-which would create figures under [/results](/results). Note this might take a long time due to 1) repeated function call at different ratio of labeled edges 2) the SVD used for creating synthetic edge flows 3) the QR factorization in RRQR algorithm. The recursive bisection algorithm and the algorithm for actual flow reconstruction is very efficient.
+which would create figures under [/results](/results). Note this would take a long time due to 1) we are testing reconstruction quality at many different ratio of labeled edges 2) the SVD used for creating synthetic edge flows are cubic scaling 3) the QR factorization in RRQR strategy is cubic scaling. On the other hand, the recursive bisection strategy and the least-square solution for actual flow reconstruction is very efficient.
 
 If you have any questions, please email to [jj585@cornell.edu](mailto:jj585@cornell.edu).
