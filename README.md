@@ -30,7 +30,7 @@ After that, you can test our algorithm by the following function call. A detaile
 ratio, rate, flow_vec, f_vec, TrSet, TeSet = ssl_prediction(FN, flow_vec)
 ```
 
-### Examples
+### Reproduce Experiments in Paper
 The plots in our paper can be reproduced by running.
 ```
 julia run.jl
