@@ -17,7 +17,7 @@ We have demonstrate in our paper that:
 Our code is tested under in Julia 1.1.0, you can install all dependent packages by running [env.jl](env.jl).
 
 ### Usage
-In order to use our code on your own edge flows data, you first need to 1) provide the adjacency matrix A of your network 2) read your edge flows into an antisymmetric flow matrix F. Then you can create structures that are compatible with our code with the following. For a detailed example, we recommend the user to look at **read_TransportationNetwork** in [traffic.jl](traffic.jl)
+In order to use our code on your own edge flows data, you first need to 1) provide the adjacency matrix **A** of your network 2) read your edge flows into an antisymmetric flow matrix **F**. Then you can create structures that are compatible with our code with the following. For a detailed example, we recommend the user to look at **read_TransportationNetwork** in [traffic.jl](traffic.jl)
 
 ```julia
 FN = NetworkOP.FlowNetwork(A);
