@@ -31,7 +31,7 @@ After that, you can test our algorithm by the following function call, where **f
 ```julia
 ratio, rate, flow_vec, f_vec, TrSet, TeSet = ssl_prediction(FN, flow_vec)
 ```
-A more detailed description of different options and outputs of this function is given as the comments of **ssl_prediction** in [utils.jl](utils.jl).
+A more detailed description of algorithm options and other outputs is given as the comments of **ssl_prediction** in [utils.jl](utils.jl).
 
 ### Reproduce Experiments in Paper
 The plots in our paper can be reproduced by running.
