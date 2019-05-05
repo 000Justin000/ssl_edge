@@ -5,7 +5,7 @@
 [Junteng Jia](https://000justin000.github.io/), [Santiago Segarra](https://segarra.rice.edu/), [Michael T. Schaub](https://michaelschaub.github.io/) and [Austin R. Benson](https://www.cs.cornell.edu/~arb/)  
 arXiv:1808.06544, 2018.
 
-Our paper brings up the question of learning edge flows in a network with partial observation, assuming the network flow is approximately conserved (divergence-free).
+Our paper brings up the problem of learning edge flows in a network with partial observation, assuming the network flow is approximately conserved (divergence-free).
 - We propose to use the edge Laplacian to minimize the divergence of flows, which boils down to a least square problem that has efficient solution.
 - We propose two active learning strategies for selecting the optimal set of edges to measure flows. The first strategy RRQR select edges to minimize reconstruction error bound, while the second recursive bisection (RB) algorithm cluster the graph and select bottleneck edges.
 
