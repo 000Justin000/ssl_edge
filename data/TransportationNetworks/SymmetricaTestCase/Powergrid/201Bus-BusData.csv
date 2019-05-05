@@ -1,0 +1,1 @@
+nodeNum,busName,nodeType,nodePFAType,status,busArea,pInject,qInject,lossZone,baseKV,voltageMag,voltageAng,maxV,minV,gpsX,gpsY,busNum,gShunt,bShuntint,string,string,string,binary,int,MW,MVAr,int,kV,pu,degrees,pu,pu,degrees,degrees,int,MW,MVAr
