@@ -1,4 +1,4 @@
-# Graph-based Semi-Supervised & Active Learning for Edge Flows
+# Semi-Supervised Learning for Edge Flows
 
 ### This repository hosts the code and some example data for the following paper:  
 [Graph-based Semi-Supervised & Active Learning for Edge Flows](https://arxiv.org/abs/1808.06544)  
