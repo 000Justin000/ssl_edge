@@ -14,7 +14,10 @@ We have demonstrate in our paper that:
 - Our proposed semi-supervised learning algorithm outperforms zerofill and linegraph baselines by a large margin.
 - We gain additional mileage by using active learning strategies to select edges to measure. In particular, RRQR works well on flows that are approximately divergence-free, while RB works well on flows that have global trend.
 
-Our code is tested under in Julia 1.1.0, you can install all dependent packages by running [env.jl](env.jl).
+Our code is tested under in Julia 1.1.0, you can install all dependent packages by running.
+```
+julia env.jl
+```
 
 ### Usage
 In order to use our code on your own edge flows data, you first need to 1) provide the adjacency matrix **A** of your network 2) read your edge flows into an antisymmetric flow matrix **F**. Then you can create structures that are compatible with our code with the following. For a detailed example, we recommend the user to look at **read_TransportationNetwork** in [traffic.jl](traffic.jl)
@@ -24,17 +27,17 @@ FN = NetworkOP.FlowNetwork(A);
 flow_vec = NetworkOP.mat2vec(FN, F);
 ```
 
-After that, you can test our algorithm by the following function call. A detailed description of the input and output of this function is given in [utils.jl](utils.jl).
-
+After that, you can test our algorithm by the following function call, where **f_vec** is the reconstructured edge flows.
 ```julia
 ratio, rate, flow_vec, f_vec, TrSet, TeSet = ssl_prediction(FN, flow_vec)
 ```
+A more detailed description of different options and outputs of this function is given as the comments of **ssl_prediction** in [utils.jl](utils.jl).
 
 ### Reproduce Experiments in Paper
 The plots in our paper can be reproduced by running.
 ```
 julia run.jl
 ```
-which would create figures under [/results](/results).
+which would create figures under [/results](/results). Note this might take a long time due to 1) repeated function call at different ratio of labeled edges 2) the SVD used for creating synthetic edge flows 3) the QR factorization in RRQR algorithm. The recursive bisection algorithm and the algorithm for actual flow reconstruction is very efficient.
 
 If you have any questions, please email to [jj585@cornell.edu](mailto:jj585@cornell.edu).
