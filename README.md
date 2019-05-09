@@ -78,7 +78,11 @@ After that, you can test our algorithm by the following function call, where **f
 ```julia
 ratio, rate, flow_vec, f_vec, TrSet, TeSet = ssl_prediction(FN, flow_vec, ratio=0.5, algorithm="flow_regulation", edge_set="random")
 ```
-Here, the **ratio** keyword sets the number of labeled edges, the **algorithm** keyword can be chosen from "flow_ssl", "line_graph", "zero_fill" corresponds to our proposed algorithm and two base lines in the paper, and **edge_set** keyword controls the strategy used to pick labeled edges. In particular, active learning strategies are used by setting **edge_set** to be "rrqr" or "rb".
+
+In the line above,
+- **ratio** keyword sets the ratio of labeled edges;
+- **algorithm** keyword can be chosen from "flow_ssl", "line_graph", "zero_fill" corresponds to our proposed algorithm and two base lines in the paper;
+- **edge_set** keyword controls the strategy used to pick labeled edges. In particular, active learning strategies are used by setting **edge_set** to be "rrqr" or "rb".
 
 A more detailed description of algorithm options and other outputs is given as the comments of **ssl_prediction** in [utils.jl](utils.jl).
 
