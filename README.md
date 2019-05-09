@@ -21,16 +21,65 @@ julia env.jl
 
 ### Usage
 In order to use our code on your own edge flows data, you need to provide 1) the adjacency matrix **A** of your network 2) an antisymmetric flow matrix **F**. Then you can convert them to structures compatible with our code with the following.
+
 ```julia
 FN = NetworkOP.FlowNetwork(A);
 flow_vec = NetworkOP.mat2vec(FN, F);
 ```
-For a detailed example, we recommend the user to look at **read_TransportationNetwork** in [traffic.jl](traffic.jl)
+
+The following is an example **read_TransportationNetwork** in [traffic.jl](traffic.jl). The first part of the function constructs the adjacency matrix of the graph as well as the anti-symmetric flow matrix from the input file.
+```julia
+#------------------------------------------------------------------------------------------------
+function read_TransportationNetwork(file, VS, skipstart, col)
+    dat = readdlm("data/TransportationNetworks/"*file, skipstart=skipstart);
+    NV = length(VS);
+    g = Graph(NV);
+    id2num = Dict{Int64,Int64}(v=>i for (i,v) in enumerate(VS));
+
+    # construct an anti-symmetric flow matrix
+    I = Vector{Int64}();
+    J = Vector{Int64}();
+    V = Vector{Float64}();
+
+    for i in 1:size(dat,1)
+        if (Int64(dat[i,col[1]]) in keys(id2num) && Int64(dat[i,col[2]]) in keys(id2num))
+            src = id2num[Int64(dat[i,col[1]])];
+            dst = id2num[Int64(dat[i,col[2]])];
+            flv = Float64(dat[i,col[3]]);
+
+            # edge does not exist, but error when creating edge
+            if (!has_edge(g, Edge(src,dst)) && !add_edge!(g, Edge(src,dst)))
+                # print warning
+                println(src,"---x-->", dst);
+            end
+
+            push!(I, src);
+            push!(J, dst);
+            push!(V, flv);
+
+            push!(I,  dst);
+            push!(J,  src);
+            push!(V, -flv);
+        end
+    end
+
+    # the FlowNetwork struct can be created by passing in the adjacency matrix
+    FN = FlowNetwork(adjacency_matrix(g));
+
+    # convert the anti-symmetric flow matrix to vector
+    flow_vec = NetworkOP.mat2vec(FN, sparse(I,J,V, NV,NV, +));
+
+    return FN, flow_vec;
+end
+#------------------------------------------------------------------------------------------------
+```
 
 After that, you can test our algorithm by the following function call, where **f_vec** is the reconstructured edge flows.
 ```julia
-ratio, rate, flow_vec, f_vec, TrSet, TeSet = ssl_prediction(FN, flow_vec)
+ratio, rate, flow_vec, f_vec, TrSet, TeSet = ssl_prediction(FN, flow_vec, ratio=0.5, algorithm="flow_regulation", edge_set="random")
 ```
+Here, the **ratio** keyword sets the number of labeled edges, the **algorithm** keyword can be chosen from "flow_ssl", "line_graph", "zero_fill" corresponds to our proposed algorithm and two base lines in the paper, and **edge_set** keyword controls the strategy used to pick labeled edges. In particular, active learning strategies are used by setting **edge_set** to be "rrqr" or "rb".
+
 A more detailed description of algorithm options and other outputs is given as the comments of **ssl_prediction** in [utils.jl](utils.jl).
 
 ### Reproduce Experiments in Paper

@@ -1,3 +1,4 @@
+println("Adding ./modules into LOAD_PATH")
 push!(LOAD_PATH, "./modules")
 
 include("scan.jl");
