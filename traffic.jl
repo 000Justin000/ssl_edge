@@ -26,7 +26,7 @@ function read_TransportationNetwork(file, VS, skipstart, col)
     g = Graph(NV);
     id2num = Dict{Int64,Int64}(v=>i for (i,v) in enumerate(VS));
 
-    # construct a anti-symmetric flow matrix
+    # construct a graph and the anti-symmetric flow matrix
     I = Vector{Int64}();
     J = Vector{Int64}();
     V = Vector{Float64}();
