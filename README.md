@@ -82,7 +82,7 @@ ratio, rate, flow_vec, f_vec, TrSet, TeSet = ssl_prediction(FN, flow_vec, ratio=
 In the line above,
 - **ratio** keyword sets the ratio of labeled edges;
 - **algorithm** keyword can be chosen from ["flow_ssl", "line_graph", "zero_fill"] and corresponds to our proposed algorithm and two base lines in the paper;
-- **edge_set** keyword can be chosen from ["random", "rrqr", "rb"] and controls the strategy used to pick labeled edges; in particular, active learning strategies are used by setting it to be "rrqr" or "rb".
+- **edge_set** keyword can be chosen from ["random", "rrqr", "rb"] and controls the strategy used to pick labeled edges; in particular, active learning strategies are actived by setting it to be "rrqr" or "rb".
 
 A more detailed description of algorithm options and other outputs is given as the comments of **ssl_prediction** in [utils.jl](utils.jl).
 
