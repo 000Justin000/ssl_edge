@@ -21,7 +21,7 @@ function scan(network_name, fun_read, read_result=false, flow_data="ori", ratios
 
     modified = false;
     h = Plots.plot(size=(270,220), framestyle=:box, title="", xlabel=L"\rm{ratio\ labeled\ } \left(|\mathcal{E}^{\rm L}| / |\mathcal{E}|\right)",
-                                                              ylabel="relative error",
+                                                              ylabel="correlation",
                                                               xlim=(0.0,1.0),
                                                               ylim=(0.0,1.0),
                                                               xlabelfont=font(12),
@@ -29,7 +29,7 @@ function scan(network_name, fun_read, read_result=false, flow_data="ori", ratios
                                                               xtickfont=font(10),
                                                               ytickfont=font(10),
                                                               legendfont=font(10),
-                                                              legend=:none);
+                                                              legend=:bottomright);
     for i in 1:length(algorithm)
         if ((algorithm[i],edge_set[i]) in keys(dat))
             real_ratios,correlations = dat[(algorithm[i],edge_set[i])];

@@ -249,6 +249,6 @@ function ssl_prediction(FN::FlowNetwork, flow_vec=nothing, ratio=0.5, flow_data=
     err2 = norm(flow_vec - f_vec)/norm(flow_vec)
     println(flow_data, "    ", algorithm, "    ", edge_set, "    ", @sprintf("%.2f", ratio), "    ", @sprintf("%+.2f", rate), "    ", @sprintf("%+7.2f", err2));
 
-    return ratio, err2, flow_vec, f_vec, TrSet, TeSet;
+    return ratio, rate, flow_vec, f_vec, TrSet, TeSet;
 end
 #------------------------------------------------------------------------------------------------
