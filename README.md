@@ -1,9 +1,9 @@
 # Semi-Supervised Learning for Edge Flows
 
 ### This repository hosts the code and some example data for the following paper:  
-[Graph-based Semi-Supervised & Active Learning for Edge Flows](https://arxiv.org/abs/XXXX.XXXXX)  
+[Graph-based Semi-Supervised & Active Learning for Edge Flows](https://arxiv.org/abs/1905.07451)  
 [Junteng Jia](https://000justin000.github.io/), [Santiago Segarra](https://segarra.rice.edu/), [Michael T. Schaub](https://michaelschaub.github.io/) and [Austin R. Benson](https://www.cs.cornell.edu/~arb/)  
-arXiv:XXXX.XXXXX, 2019.
+arXiv:1905.07451, 2019.
 
 Our paper brings up the problem of learning edge flows in a network with partial observation, assuming the network flow is approximately conserved (divergence-free).
 - We propose to use the edge Laplacian to minimize the divergence of flows, which boils down to a least square problem that has efficient solution.
